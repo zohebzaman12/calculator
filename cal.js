@@ -3,7 +3,8 @@ function add(a,b){
 }
 
 function subtract(a,b){
-    return a - b ;
+    let c = a - b;
+    return c ;
 
 }
 
@@ -46,16 +47,19 @@ clear_button.addEventListener('click',() =>{
 } );
 
 function clear(){
-    display.textContent = "";
+    display_string = '';
+    display.textContent = '';
     display_value = 0;
+    stack.length =0;
 }
 
 display_digits.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        display.textContent = display.textContent+button.value;
-        display_value = parseInt(display.textContent);
+        display_string = display_string + button.value;
+        display.textContent = display_string;
+        display_value = parseInt(display_string);
     });
   });
 
@@ -66,36 +70,49 @@ display_digits.forEach((button) => {
   let second_value = 0;
   let operator_sign = '';
   let answer = 0;
+  
+  const stack = [];
+
+  let display_string = '';
 
     operator_val.forEach((button) => {
 
     // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
-        if(operator_sign !== ''){
+            stack.push(display_value);
 
-        }
-        operator_sign = button.value;
-        first_value = display_value;
-        clear();
-        
-    });
-  });
+            if(stack.length === 1){
+                operator_sign = button.value;
+                display_string = '';
+                display_value = 0;
+                return;
+            }else{
+                second_value = stack.pop();
+                first_value = stack.pop();
+                let answer = operate(operator_sign,first_value,second_value);
+                stack.push(answer);
+                if(button.value !== '='){
+                    operator_sign = button.value;
+                }
+                display.textContent = answer;
+                display_string = '';
+                display_value = 0;
+            }
 
-    const equal_button = document.querySelector('.equal__button');
+       
+        });
+
+  
+
+    })
+
+    // const equal_button = document.querySelector('.equal__button');
    
-    equal_button.addEventListener('click',() =>{
+    // equal_button.addEventListener('click',() =>{
       
-        doOperate();
-        operator_sign = ''
+    //     doOperate();
+    //     operator_sign = ''
 
         
-    } );
+    // } );
 
-
-    function doOperate(){
-        second_value = display_value;
-        answer = (operate(operator_sign,first_value,second_value));
-        display.textContent = answer;
-        display_value = answer;
-        
-    }
