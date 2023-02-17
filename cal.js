@@ -15,6 +15,9 @@ function multiply(a,b){
 }
 
 function divide(a,b){
+    if(b === 0){
+        return 'error';
+    }
     return a / b ;
     
 }
@@ -54,8 +57,6 @@ function clear(){
 }
 
 display_digits.forEach((button) => {
-
-    // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
         display_string = display_string + button.value;
         display.textContent = display_string;
@@ -66,10 +67,7 @@ display_digits.forEach((button) => {
 
   const operator_val = document.querySelectorAll('.operator__button'); 
 
-  let first_value = 0;
-  let second_value = 0;
   let operator_sign = '';
-  let answer = 0;
   
   const stack = [];
 
@@ -77,7 +75,6 @@ display_digits.forEach((button) => {
 
     operator_val.forEach((button) => {
 
-    // and for each one we add a 'click' listener
     button.addEventListener('click', () => {
             stack.push(display_value);
 
@@ -87,8 +84,8 @@ display_digits.forEach((button) => {
                 display_value = 0;
                 return;
             }else{
-                second_value = stack.pop();
-                first_value = stack.pop();
+                let second_value = stack.pop();
+                let first_value = stack.pop();
                 let answer = operate(operator_sign,first_value,second_value);
                 stack.push(answer);
                 if(button.value !== '='){

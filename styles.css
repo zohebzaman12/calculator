@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,400;0,500;0,700;1,100&display=swap');
+
+
+body{
+    background-color: #7437bc;
+    color: #584270;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.canvas{
+    background-color: white;
+    width: 300px;
+    height: 436px; 
+    overflow: hidden;
+    margin: 100px auto;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+}
+.display_canvas{
+    height: 70px;
+    margin: 20px;
+
+}
+
+.display{
+    padding: 10px;
+    font-weight: 500;
+    height: 60px;
+    font-size: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items:flex-end
+}
+
+
+
+.buttons{
+    padding: 10px 50px;
+    
+    
+}
+
+button{
+    padding: 10px;
+    font-size: 20px;
+      border: none;
+      
+   
+}
+
+
+
+.row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.row button{
+    flex-grow: 1;
+    margin: 0;
+   
+}
+   
+.operator__button.equal_button{
+    margin: 0;
+    margin-top: 7px;
+    padding: 20px;
+    background-color: #BD8FF2;
+    
+}
+
+
+.row.row1 button{
+    padding: 15px;
+   
+    background: none;   
+}
+
+.row.row1 .operator__button {
+    font-size: 25px;
+    color: #9a50ee;
+    
+}
